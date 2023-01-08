@@ -140,18 +140,18 @@ router.beforeEach(async (to, from, next) => {
 	async function doAction() {
 		if (store.state.sessionToken == null) {
 			if (to.name !== 'login')
-				next({path: '/login'});
+				next({name: 'login'});
 			else next();
 
 			return;
 		}
 
-		if (to.path === '/logout') {
+		if (to.name === 'logout') {
 			window.store.commit("SET_SESSION_TOKEN", null);
 			window.store.commit("easyTriviaModuleState/RESET_ALL");
 			window.store.commit("mediumTriviaModuleState/RESET_ALL");
 			window.store.commit("hardTriviaModuleState/RESET_ALL");
-			await router.push('login');
+			await router.push({name: 'login'});
 			return;
 		}
 		next();
