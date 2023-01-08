@@ -3,11 +3,10 @@
 	"version" : "1.0.0",
 	"scripts" : {
 		"dev" : "vite --port 3000",
-		"build" : "run-p type-check build-only",
-		"preview" : "vite preview --port 3000",
 		"build-only" : "vite build",
-		"start": "npx http-server -P http://0.0.0.0:${PORT} ./dist",
-		"type-check" : "vue-tsc --noEmit"
+		"start": "npx http-server ./dist",
+		"build": "vue-tsc --noEmit && vite build",
+		"preview": "vite preview"
 	},
 	"dependencies" : {
 		"@babel/types" : "^7.20.7",
