@@ -5,6 +5,7 @@ interface IHardTriviaModuleState {
 	currentQuestionNumber: number | null;
 	questions: any | null;
 	choices: any | null;
+	interval: any | null;
 }
 
 const hardTriviaModuleState: Module<IHardTriviaModuleState, unknown> = {
@@ -14,10 +15,17 @@ const hardTriviaModuleState: Module<IHardTriviaModuleState, unknown> = {
 		questions: null,
 		choices: null,
 		time: 0,
+		interval: null,
 	}),
 	actions: {
 		RESET_ALL(context, args) {
 			context.commit("RESET_ALL", args);
+		},
+		CLEAR_INTERVAL(context, args) {
+			context.commit("CLEAR_INTERVAL", args);
+		},
+		SET_INTERVAL(context, args) {
+			context.commit("SET_INTERVAL", args);
 		},
 		SET_CHOICE(context, args) {
 			context.commit("SET_CHOICE", args);
@@ -33,6 +41,20 @@ const hardTriviaModuleState: Module<IHardTriviaModuleState, unknown> = {
 		},
 	},
 	mutations: {
+		RESET_ALL(state, args) {
+			state.currentQuestionNumber = 0;
+			state.questions = null;
+			state.choices = null;
+			state.time = 0;
+			clearInterval(state.interval);
+		},
+		CLEAR_INTERVAL(state, args) {
+			if(state.interval == null) return;
+			clearInterval(state.interval);
+		},
+		SET_INTERVAL(state, args) {
+			state.interval = args;
+		},
 		SET_CHOICE(state, args) {
 			if (state.choices == null) state.choices = [];
 			state.choices[args.index] = args.chosenIndex;
@@ -48,15 +70,8 @@ const hardTriviaModuleState: Module<IHardTriviaModuleState, unknown> = {
 		},
 	},
 	getters: {
-		RESET_ALL(state, args) {
-			state.currentQuestionNumber = 0;
-			state.questions = null;
-			state.choices = null;
-			state.time = 0;
-		},
 		getChoiceByIndex: (state) => (index) => {
 			if (state.choices == null) state.choices = [];
-			if(state.choices[index]) return null;
 			return state.choices[index];
 		},
 		getCurrentQuestionNumber(state) {

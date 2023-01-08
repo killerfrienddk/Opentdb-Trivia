@@ -14,6 +14,7 @@ export default {
 	components: {TriviaWrapper},
 	beforeRouteEnter(to, from, next) {
 		next(async vm => {
+			vm.$store.commit(`${vm.$store.state.difficulty.toLowerCase()}TriviaModuleState/CLEAR_INTERVAL`)
 			vm.$nextTick(() => vm.$store.commit("SET_DIFFICULTY", "Easy"));
 		});
 	},

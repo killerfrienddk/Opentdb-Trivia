@@ -56,6 +56,8 @@ export default {
 			this.timerInterval = setInterval(() => {
 				this.$store.commit(`${this.getStoreModuleName}SET_TIME`, ++this.timePassed);
 			}, 1000);
+			
+			this.$store.commit(`${this.getStoreModuleName}SET_INTERVAL`, this.timerInterval)
 		}
 	},
 	mounted() {
