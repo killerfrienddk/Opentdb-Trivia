@@ -58,12 +58,11 @@ interface RouteConfig extends _RouteConfigBase {
 
 const routes: RouteConfig[] = [
 	{path: '/', redirect: {name: "login"}},
-	{path: '/opentdb-trivia/', redirect: {name: "login"}},
-	{path: '/opentdb-trivia/login', name: "login", component: LoginComponent},
-	{path: '/opentdb-trivia/results', name: "results", component: ResultComponent},
-	{path: '/opentdb-trivia/easy', name: "easy", component: EasyComponent},
-	{path: '/opentdb-trivia/medium', name: "medium", component: MediumComponent},
-	{path: '/opentdb-trivia/hard', name: "hard", component: HardComponent},
+	{path: '/login', name: "login", component: LoginComponent},
+	{path: '/results', name: "results", component: ResultComponent},
+	{path: '/easy', name: "easy", component: EasyComponent},
+	{path: '/medium', name: "medium", component: MediumComponent},
+	{path: '/hard', name: "hard", component: HardComponent},
 ];
 
 const router = new VueRouter({
@@ -141,13 +140,13 @@ router.beforeEach(async (to, from, next) => {
 	async function doAction() {
 		if (store.state.sessionToken == null) {
 			if (to.name !== 'login')
-				next({name: 'login'});
+				next({path: '/login'});
 			else next();
 
 			return;
 		}
 
-		if (to.path === '/opentdb-trivia/logout') {
+		if (to.path === '/logout') {
 			window.store.commit("SET_SESSION_TOKEN", null);
 			window.store.commit("easyTriviaModuleState/RESET_ALL");
 			window.store.commit("mediumTriviaModuleState/RESET_ALL");
