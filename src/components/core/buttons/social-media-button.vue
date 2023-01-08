@@ -39,13 +39,6 @@ export default {
             default: null,
         }
     },
-    methods: {
-        handleSocialMediaLogin() {
-            // I have not implemented this so for now it will just allow the user to login just to make it interactive.
-
-
-        }
-    }
 }
 </script>
 
