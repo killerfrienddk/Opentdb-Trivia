@@ -1,31 +1,33 @@
 {
-  "compileOnSave": true,
-  "compilerOptions": {
-    "skipDefaultLibCheck": true,
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "lib": [
-      "ES2020",
-      "dom"
-    ],
-    "target": "ES2020",
-    "module": "ESNext",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./Scripts/plugins"
-    ],
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-	  "allowSyntheticDefaultImports": true
-  },
-  "exclude": [
-    "node_modules",
-    "./src/main.ts"
-  ],
+	"compileOnSave" : true,
+	"compilerOptions" : {
+		"skipDefaultLibCheck" : true,
+		"noImplicitAny" : false,
+		"noEmitOnError" : true,
+		"removeComments" : true,
+		"sourceMap" : true,
+		"allowJs" : true,
+		"lib" : [
+			"ES2020",
+			"dom"
+		],
+		"target" : "ES2020",
+		"module" : "ESNext",
+		"typeRoots" : [
+			"./node_modules/@types",
+		],
+		"experimentalDecorators" : true,
+		"moduleResolution" : "node",
+		"baseUrl" : ".",
+		"paths" : {
+			"@/*" : [
+				"./src/*"
+			]
+		},
+		"allowSyntheticDefaultImports" : true
+	},
+	"exclude" : [
+		"node_modules",
+		"./src/main.ts"
+	]
 }
