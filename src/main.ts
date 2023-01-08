@@ -1,10 +1,7 @@
 import Vue from 'vue';
 import './assets/main.scss';
-import {findIndex} from "underscore";
 import type {_RouteConfigBase, Component} from "vue-router/types/router";
-// Load the Vue router
 import VueRouter from 'vue-router';
-import {VueToast} from "./plugins/vue-toast";
 
 import type {CombinedVueInstance} from 'vue/types/vue';
 import Vuex, {ModuleTree, Store} from 'vuex';
@@ -23,7 +20,6 @@ declare global {
 window.Vue = Vue;
 
 Vue.use(VueRouter);
-Vue.use(VueToast);
 Vue.use(Vuex);
 
 import {FontAwesomeIcon, FontAwesomeLayers} from '@fortawesome/vue-fontawesome';
@@ -76,8 +72,6 @@ const router = new VueRouter({
 
 interface IState {
 	sessionToken: any,
-	toasts: { type: "danger" | "success" | "primary" | "info" | "secondary", text: string | object, header: string, until: number, time: number, Id: string }[];
-	isDarkTheme: boolean;
 	difficulty: string;
 }
 
@@ -105,35 +99,14 @@ const store = new Vuex.Store<IState>({
 	},
 	state: {
 		sessionToken: null,
-		toasts: [],
-		isDarkTheme: false,
 		difficulty: "",
 	},
 	getters: {
-		getIsDarkTheme(state) {
-			return state.isDarkTheme;
-		},
 		getDifficulty(state) {
 			return state.difficulty;
 		},
 		getState(state) {
 			return state;
-		},
-		getToasts(state) {
-			const arr = [];
-			for (let i = 0; i < state.toasts.length; i++) {
-				const item = state.toasts[i];
-				if ((item.until !== null && item.until !== undefined) && item.until > (item.until - Date.now())) continue;
-
-				/*arr.push({
-					Id: item.Id,
-					type: item.type,
-					header: item.header,
-					text: item.text,
-					timeText: window.moment(item.time).fromNow()
-				});*/
-			}
-			return arr;
 		},
 		getSessionToken(state) {
 			return state.sessionToken;
@@ -146,12 +119,6 @@ const store = new Vuex.Store<IState>({
 		RESET_STATE(context) {
 			context.commit("RESET_STATE");
 		},
-		addToast(context, toast) {
-			context.commit("ADD_TOAST", toast);
-		},
-		removeToast(context, toastId) {
-			context.commit("REMOVE_TOAST", toastId);
-		},
 	},
 	mutations: {
 		SET_DIFFICULTY(state, difficulty) {
@@ -162,20 +129,6 @@ const store = new Vuex.Store<IState>({
 		},
 		RESET_STATE(state) {
 			state.sessionToken = null;
-			state.toasts = [];
-		},
-		ADD_TOAST(state, toast) {
-			/*toast.Id = Guid.create().toString();*/
-			toast.time = Date.now();
-			state.toasts.push(toast);
-		},
-		REMOVE_TOAST(state, toastId) {
-			const index = findIndex(state.toasts, function (toast) {
-				return toast.Id === toastId;
-			});
-			if (index > -1) {
-				state.toasts.splice(index, 1);
-			}
 		},
 	},
 	plugins: [vuexLocal.plugin]
