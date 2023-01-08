@@ -66,7 +66,6 @@ const routes: RouteConfig[] = [
 ];
 
 const router = new VueRouter({
-	base: '/opentdb-trivia/',
 	mode: 'history',
 	routes: routes
 });
