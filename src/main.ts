@@ -137,10 +137,8 @@ const store = new Vuex.Store<IState>({
 window.store = store;
 
 router.beforeEach(async (to, from, next) => {
-	console.log("test")
 	async function doAction() {
 		if (store.state.sessionToken == null) {
-			console.log("test1")
 			if (to.name !== 'login')
 				next({name: 'login'});
 			else next();
@@ -149,7 +147,6 @@ router.beforeEach(async (to, from, next) => {
 		}
 
 		if (to.path === '/logout') {
-			console.log("test2")
 			window.store.commit("SET_SESSION_TOKEN", null);
 			window.store.commit("easyTriviaModuleState/RESET_ALL");
 			window.store.commit("mediumTriviaModuleState/RESET_ALL");
@@ -157,7 +154,6 @@ router.beforeEach(async (to, from, next) => {
 			await router.push({name: 'login'});
 			return;
 		}
-		console.log("test3")
 		next();
 	}
 
