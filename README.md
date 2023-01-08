@@ -22,5 +22,9 @@ I didn't have a lot of time to work on this project, as I have a very strict sch
 7. Develop more custom components.
 9. Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
 
-### Other interesting things that I did while building this.
+## Other interesting things that I did while building this.
+#### Randomizing the choices
 I ran into some issues while attempting to randomize the choices. I wanted to avoid having the correct answer always be the first option, so I implemented a solution using a global unique identifier (GUID) and the token as a seed. This ensures that the choices will remain in the same random order when navigating through the questions, rather than being randomized again each time you go to a new question and then return to a previous one.
+
+#### Encoding issues
+I noticed that I was experiencing some encoding issues, so I used the tried and true method of using a textarea to decode it into regular text.
