@@ -13,11 +13,14 @@ I didn't have a lot of time to work on this project, as I have a very strict sch
 
 ### If I had more time, there are a few things I would like to improve:
 
-Add error handling for when there are no more questions left.
-Implement modals, such as one that appears when you log in, asking you to start a game or select a difficulty level.
-Add toasts for certain actions.
-Enhance the styling of the nav bar. While it's not a major focus of the project, adding a user menu could make it look better. However, it's currently sufficient as it scales well.
-Implement measures to prevent users from accessing the results page and seeing all of the results.
-Create a tooltip script using a directive.
-Develop more custom components.
-Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
+1. Add error handling for when there are no more questions left.
+2. Implement modals, such as one that appears when you log in, asking you to start a game or select a difficulty level.
+3. Add toasts for certain actions.
+4. Enhance the styling of the nav bar. While it's not a major focus of the project, adding a user menu could make it look better. However, it's currently sufficient as it scales well.
+5. Implement measures to prevent users from accessing the results page and seeing all of the results.
+6. Create a tooltip script using a directive.
+7. Develop more custom components.
+9. Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
+
+### Other interesting things that I did while building this.
+I ran into some issues while attempting to randomize the choices. I wanted to avoid having the correct answer always be the first option, so I implemented a solution using a global unique identifier (GUID) and the token as a seed. This ensures that the choices will remain in the same random order when navigating through the questions, rather than being randomized again each time you go to a new question and then return to a previous one.
