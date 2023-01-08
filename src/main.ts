@@ -139,10 +139,9 @@ window.store = store;
 
 router.beforeEach(async (to, from, next) => {
 	async function doAction() {
-		debugger
 		if (store.state.sessionToken == null) {
 			if (to.name !== 'login')
-				next({path: '/opentdb-trivia/login'});
+				next({name: 'login'});
 			else next();
 
 			return;
