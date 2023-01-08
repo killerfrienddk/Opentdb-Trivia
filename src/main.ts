@@ -57,6 +57,7 @@ interface RouteConfig extends _RouteConfigBase {
 }
 
 const routes: RouteConfig[] = [
+	{path: '/opentdb-trivia', redirect: {name: "login"}},
 	{path: '/opentdb-trivia/login', name: "login", component: LoginComponent},
 	{path: '/opentdb-trivia/results', name: "results", component: ResultComponent},
 	{path: '/opentdb-trivia/easy', name: "easy", component: EasyComponent},
