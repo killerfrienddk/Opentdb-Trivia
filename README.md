@@ -2,23 +2,22 @@
 
 
 ### Login info
-Facebook and Google login is dummy logins they are made to just login on clicking on the icons.
+The Facebook and Google login options are dummy logins. They are designed to allow users to log in by clicking on the icons without requiring a password. Please note that these logins are currently not functional.
 ```
 Website: https://killerfrienddk.github.io/opentdb-trivia
 Email: admin@outlook.dk
 Password: admin
 ```
 
-I did not really have too much time to make this, I have a pretty strict schedule atm.
-Please keep in mind I am not good at design ;)
+I didn't have a lot of time to work on this project, as I have a very strict schedule at the moment. Please keep in mind that I am not skilled in design. Additionally, I haven't used Tailwind much, so you may notice some places in the code where it is applied better than others. This is because I gradually learned how to use it more effectively as I worked on the project.
 
-Also I have not really used Tailwind that much, if you look at my project's code then you should see some places where it is better applied than other places. This is because I slowly descovered ways of using it that makde it easier to make the same design or similar designs.
+### If I had more time, there are a few things I would like to improve:
 
-
-## Things I would want to make better if I had more time
-
-1. Error handling on if there is no more questions left.
-2. I would have loved to make some modals. For when you just login prompting you to click start a game maybe to choose which dificulty you are wanting to play on.
-3. Was planning on making toasts on some actions.
-4. Styling of nav bar, the nav bar is a bit meh, I did not do much to it since I felt it was not really a big part of the assignment, adding a bruger menu might help a bit but it seems to be fine without one, since it scales okay.
-5. Figure out a way to get rid of the hash tags in the url. It seems that if you do not use the hash mode then it will simply not work on reloading it will return a 404 on github pages.
+Add error handling for when there are no more questions left.
+Implement modals, such as one that appears when you log in, asking you to start a game or select a difficulty level.
+Add toasts for certain actions.
+Enhance the styling of the nav bar. While it's not a major focus of the project, adding a user menu could make it look better. However, it's currently sufficient as it scales well.
+Implement measures to prevent users from accessing the results page and seeing all of the results.
+Create a tooltip script using a directive.
+Develop more custom components.
+Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
