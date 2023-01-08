@@ -6,7 +6,7 @@
 		"build" : "run-p type-check build-only",
 		"preview" : "vite preview --port 3000",
 		"build-only" : "vite build",
-		"start": "npx http-server -P http://127.0.0.1:${PORT} ./dist",
+		"start": "npx http-server -P http://0.0.0.0:${PORT} ./dist",
 		"type-check" : "vue-tsc --noEmit"
 	},
 	"dependencies" : {
