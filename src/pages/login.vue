@@ -13,7 +13,7 @@
 			<label class="mt-2 mb-1 block font-semibold">Password<a
 				class="underline font-semibold text-gray-400 ml-2"><small>Forgot?</small></a></label>
 			<div class="relative">
-				<input v-model="password" type="text"
+				<input v-model="password" type="password"
 					   class="p-2 rounded border-2 w-full focus:outline-none focus:ring-0">
 				<small class="absolute left-1 top-full text-red-600" v-show="error">{{ error }}</small>
 			</div>
