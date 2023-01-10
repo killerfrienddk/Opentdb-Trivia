@@ -71,7 +71,7 @@ export default {
 				return;
 			}
 
-			if (this.email !== "admin@outlook.dk" || this.password !== "admin") {
+			if (this.email !== "admin@mail.com" || this.password !== "admin") {
 				this.loggingIn = false;
 				this.error = "Your email or password is wrong!";
 				return;
