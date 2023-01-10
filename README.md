@@ -5,7 +5,7 @@
 The Facebook and Google login options are dummy logins. They are designed to allow users to log in by clicking on the icons without requiring a password. Please note that these logins are currently not functional.
 ```
 Website: https://killerfrienddk.github.io/opentdb-trivia
-Email: admin@outlook.dk
+Email: admin@mail.com
 Password: admin
 ```
 
