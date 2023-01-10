@@ -9,11 +9,11 @@
 									 social-network-class="google-button" text="Google"></social-media-button>
 			</div>
 			<label class="mt-2 mb-1 block font-semibold">Email</label>
-			<input v-model="email" type="text" class="p-2 mb-2 rounded border-2 w-full focus:outline-none focus:ring-0">
+			<input v-model="email" @keyup.enter="login" type="text" class="p-2 mb-2 rounded border-2 w-full focus:outline-none focus:ring-0">
 			<label class="mt-2 mb-1 block font-semibold">Password<a
 				class="underline font-semibold text-gray-400 ml-2"><small>Forgot?</small></a></label>
 			<div class="relative">
-				<input v-model="password" type="password"
+				<input v-model="password" type="password" @keyup.enter="login"
 					   class="p-2 rounded border-2 w-full focus:outline-none focus:ring-0">
 				<small class="absolute left-1 top-full text-red-600" v-show="error">{{ error }}</small>
 			</div>
