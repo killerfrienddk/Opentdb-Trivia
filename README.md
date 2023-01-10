@@ -22,6 +22,7 @@ I didn't have a lot of time to work on this project, as I have a very strict sch
 7. Create a tooltip script using a directive.
 8. Develop more custom components to reuse on the site.
 9. Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
+10. Allow the usage of enter on the login page.
 
 ## Other interesting things that I did while building this.
 #### Randomizing the choices
