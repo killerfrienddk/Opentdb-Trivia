@@ -2,7 +2,7 @@
 	<button @click="click"
 			class="flex justify-center border w-full bg-white flex-col items-center py-5 select-none"
 			:class="getChoiceBGClass">
-		<span v-if="correctIndex != null" class="absolute top-1 right-2">
+		<span v-if="correctIndex != null" class="absolute top-1 right-2" title="correct answer.">
 			<font-awesome-icon v-if="index === correctIndex" class="text-lime-400" icon="fa-solid fa-circle-check" />
 		</span>
 		<span>
