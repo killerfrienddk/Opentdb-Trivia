@@ -19,7 +19,7 @@ I didn't have a lot of time to work on this project, as I have a very strict sch
 4. Enhance the styling of the nav bar. While it's not a major focus of the project, adding a user menu could make it look better. However, it's currently sufficient as it scales well.
 5. Implement measures to prevent users from accessing the results page and seeing all of the results.
 6. Create a tooltip script using a directive.
-7. Develop more custom components.
+7. Develop more custom components to reuse on the site.
 8. Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
 
 ## Other interesting things that I did while building this.
