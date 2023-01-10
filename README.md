@@ -9,7 +9,7 @@ Email: admin@outlook.dk
 Password: admin
 ```
 
-I didn't have a lot of time to work on this project, as I have a very strict schedule at the moment. Please keep in mind that I am not skilled in design. Additionally, I haven't used Tailwind much, so you may notice some places in the code where it is applied better than others. This is because I gradually learned how to use it more effectively as I worked on the project.
+I didn't have a lot of time to work on this project, as I have a very strict schedule at the moment. Please keep in mind that I am not skilled in design. Additionally, I haven't used Tailwind much, so you may notice some places in the code where it is applied better than others. This is because I gradually learned how to use it more effectively as I worked on this project.
 
 ### If I had more time, there are a few things I would like to improve:
 
