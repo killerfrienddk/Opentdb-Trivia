@@ -14,15 +14,14 @@ I didn't have a lot of time to work on this project, as I have a very strict sch
 ### If I had more time, there are a few things I would like to improve:
 
 1. Add error handling for when there are no more questions left.
-2. Implement modals, such as one that appears when you log in, asking you to start a game or select a difficulty level.
+2. Implement modals, such as one that appears when you log in, asking you to start a game and select a difficulty level to start on.
 3. Make the results page in to a modal instead of having it as a page.
-4. Implement measures to prevent users from accessing the results page and seeing all of the results.
+4. Implement measures to prevent users from accessing the results page and seeing all of the results before the quiz is over.
 5. Add toasts for certain actions.
-6. Enhance the styling of the nav bar. While it's not a major focus of the project, adding a user menu could make it look better. However, it's currently sufficient as it scales well.
-7. Create a tooltip script using a directive.
+6. Enhance the styling of the nav bar. It was not really my focus of the project, adding a burger menu could make it look better. However, it's currently sufficient as it scales well for mobile.
+7. Create a tooltip script using vue directive.
 8. Develop more custom components to reuse on the site.
 9. Find a way to remove hash tags from the URL. Currently, if the hash mode is not used, the page will not work when reloaded and will return a 404 error on GitHub Pages.
-10. Allow the usage of enter on the login page.
 
 ## Other interesting things that I did while building this.
 #### Randomizing the choices
