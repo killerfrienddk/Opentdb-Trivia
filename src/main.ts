@@ -1,95 +1,54 @@
-import Vue from 'vue';
-import './assets/main.scss';
-import type {_RouteConfigBase, Component} from "vue-router/types/router";
-import VueRouter from 'vue-router';
-
+import Vue from 'vue'
+import './assets/main.scss'
+import VueRouter from 'vue-router'
+import Vuex, { ModuleTree, Store } from 'vuex'
 import type {CombinedVueInstance} from 'vue/types/vue';
-import Vuex, {ModuleTree, Store} from 'vuex';
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome'
+import { config, library } from '@fortawesome/fontawesome-svg-core'
+import { faSquareFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import LoginComponent from './pages/login.vue'
+import ResultComponent from './pages/result/results.vue'
+import EasyComponent from './pages/difficulties/easy.vue'
+import MediumComponent from './pages/difficulties/medium.vue'
+import HardComponent from './pages/difficulties/hard.vue'
+import easyTriviaModuleState from './store-modules/easyTriviaModuleState'
+import mediumTriviaModuleState from './store-modules/mediumTriviaModuleState'
+import hardTriviaModuleState from './store-modules/hardTriviaModuleState'
+import VuexPersistence from 'vuex-persist'
+import App from './App.vue'
 
-declare global {
-	export interface Window {
-		// @ts-ignore
-		Vue: typeof Vue;
-		store: Store<IState>;
-		route: VueRouter;
-		vueApp: CombinedVueInstance<Vue, object, object, object, Record<never, unknown>>;
-	}
-}
+Vue.use(VueRouter)
+Vue.use(Vuex)
 
-// @ts-ignore
-window.Vue = Vue;
+config.autoAddCss = false
+library.add(faSquareFacebook, faGoogle, faCircleCheck)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-layers', FontAwesomeLayers)
 
-Vue.use(VueRouter);
-Vue.use(Vuex);
-
-import {FontAwesomeIcon, FontAwesomeLayers} from '@fortawesome/vue-fontawesome';
-import {config, library} from '@fortawesome/fontawesome-svg-core';
-
-config.autoAddCss = false;
-
-import {faSquareFacebook} from "@fortawesome/free-brands-svg-icons/faSquareFacebook";
-import {faGoogle} from "@fortawesome/free-brands-svg-icons/faGoogle";
-
-library.add(
-	faSquareFacebook, faGoogle,
-);
-
-import {faCircleCheck} from "@fortawesome/free-solid-svg-icons/faCircleCheck";
-
-library.add(
-	faCircleCheck,
-);
-
-Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.component('font-awesome-layers', FontAwesomeLayers);
-
-/* eslint-disable vue/max-len */
-const LoginComponent = () => import("./pages/login.vue");
-const ResultComponent = () => import("./pages/result/results.vue");
-const EasyComponent = () => import("./pages/difficulties/easy.vue");
-const MediumComponent = () => import("./pages/difficulties/medium.vue");
-const HardComponent = () => import("./pages/difficulties/hard.vue");
-
-/* eslint-enable vue/max-len */
-
-interface RouteConfig extends _RouteConfigBase {
-	component?: Component | unknown
-}
-
-const routes: RouteConfig[] = [
-	{path: '/', redirect: {name: "login"}},
-	{path: '/login', name: "login", component: LoginComponent},
-	{path: '/results', name: "results", component: ResultComponent},
-	{path: '/easy', name: "easy", component: EasyComponent},
-	{path: '/medium', name: "medium", component: MediumComponent},
-	{path: '/hard', name: "hard", component: HardComponent},
-];
+const routes = [
+	{ path: '/', redirect: { name: 'login' } },
+	{ path: '/login', name: 'login', component: LoginComponent },
+	{ path: '/results', name: 'results', component: ResultComponent },
+	{ path: '/easy', name: 'easy', component: EasyComponent },
+	{ path: '/medium', name: 'medium', component: MediumComponent },
+	{ path: '/hard', name: 'hard', component: HardComponent },
+]
 
 const router = new VueRouter({
 	mode: 'hash',
-	routes: routes
-});
+	routes,
+})
 
 interface IState {
-	sessionToken: any,
-	difficulty: string;
+	sessionToken: any
+	difficulty: string
 }
-
-import easyTriviaModuleState from "./store-modules/easyTriviaModuleState";
-import mediumTriviaModuleState from "./store-modules/mediumTriviaModuleState";
-import hardTriviaModuleState from "./store-modules/hardTriviaModuleState";
-
-import VuexPersistence from 'vuex-persist';
 
 const vuexLocal = new VuexPersistence({
 	storage: window.localStorage,
-	modules: ["easyTriviaModuleState",
-		"mediumTriviaModuleState",
-		"hardTriviaModuleState",
-		"sessionToken",
-		"difficulty"],
-});
-
+	modules: ['easyTriviaModuleState', 'mediumTriviaModuleState', 'hardTriviaModuleState', 'sessionToken', 'difficulty'],
+})
 
 const store = new Vuex.Store<IState>({
 	modules: {
@@ -134,7 +93,15 @@ const store = new Vuex.Store<IState>({
 	plugins: [vuexLocal.plugin]
 });
 
-window.store = store;
+declare global {
+	interface Window {
+		Vue: typeof Vue
+		store: Store<IState>
+		route: VueRouter
+		vueApp: CombinedVueInstance<Vue, object, object, object, Record<never, unknown>>
+	}
+}
+
 
 router.beforeEach(async (to, from, next) => {
 	async function doAction() {
@@ -160,14 +127,15 @@ router.beforeEach(async (to, from, next) => {
 	await doAction();
 });
 
-window.route = router;
+// @ts-ignore
+window.Vue = Vue
+window.store = store
+window.route = router
 
-import AppView from "./app.vue";
-
-const app = new Vue({
+const vueApp = new Vue({
 	store,
 	router,
-	render: (h) => h(AppView)
-}).$mount('#app');
+	render: (h) => h(App),
+}).$mount('#app')
 
-window.vueApp = app;
+window.vueApp = vueApp
